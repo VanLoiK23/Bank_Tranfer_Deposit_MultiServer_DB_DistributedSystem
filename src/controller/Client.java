@@ -5,7 +5,7 @@ import controller.rmi.IBank;
 public class Client {
 	public static void main(String[] args) {
 		try {
-			IBank bankA = (IBank) java.rmi.Naming.lookup("rmi://localhost:1099/BankA");
+			IBank bankA = (IBank) java.rmi.Naming.lookup("rmi://192.168.1.243:2020/BankA");
 
 			System.out.println("Before transfer:");
 			System.out.println("1001 = " + bankA.getBalance("1001"));

@@ -13,9 +13,13 @@ public class BankServerImpl extends UnicastRemoteObject implements IBank {
     private String dbName;
     private String mirrorUrl;
 
-    public BankServerImpl(String dbName, String mirrorUrl) throws RemoteException {
+    public BankServerImpl(String dbName) throws RemoteException {
         this.dbName = dbName;
+    }
+    
+    public void setRemoteBank(String mirrorUrl) throws RemoteException {
         this.mirrorUrl = mirrorUrl;
+        System.out.println("🔗 " + mirrorUrl + " linked to remote bank.");
     }
 
     @Override
