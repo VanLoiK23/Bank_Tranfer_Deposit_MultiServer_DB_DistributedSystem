@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="534.0" prefWidth="777.0" style="-fx-background-color: linear-gradient(#f6f8fb, #eef3fb);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TransferController">
+
+    <!-- Thanh trên cùng -->
+    <HBox layoutX="14" layoutY="14" prefHeight="28" prefWidth="633.0" spacing="10" AnchorPane.leftAnchor="14" AnchorPane.rightAnchor="130.0">
+        <Label style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1f2937;" text="PAY TO WIN" />
+        <Region HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <!-- Nội dung chính -->
+    <HBox layoutX="14" layoutY="60" prefHeight="460.0" prefWidth="746.0" spacing="14" AnchorPane.bottomAnchor="14" AnchorPane.leftAnchor="14" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="60">
+
+        <!-- Cột trái -->
+        <VBox prefWidth="220" spacing="12">
+            <Label style="-fx-font-size: 13px; -fx-font-weight: 600; -fx-text-fill: #111827;" text="Tài khoản của tôi" />
+
+            <VBox spacing="8" style="-fx-padding: 8;">
+                <Pane prefHeight="90" prefWidth="220.0" style="-fx-background-color: linear-gradient(#0ea5a4, #0369a1);                              -fx-background-radius: 10; -fx-padding: 10;                              -fx-effect: dropshadow(two-pass-box, rgba(3,105,161,0.18), 8, 0, 0, 3);">
+                    <VBox layoutX="10" layoutY="8">
+                        <Label style="-fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 12px;" text="Tài khoản chính" />
+                        <Label fx:id="myAccountNumber" style="-fx-text-fill: rgba(255,255,255,0.9); -fx-font-size: 15px; -fx-font-weight: 700;" text="••• 1234" />
+                        <Label fx:id="myBanlance" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: 600;" text="₫700,000" />
+                    </VBox>
+                </Pane>
+            </VBox>
+
+            <Pane prefHeight="86.0" prefWidth="206.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 10;                          -fx-effect: dropshadow(two-pass-box, rgba(30,41,59,0.04), 8, 0, 0, 3);">
+                <VBox spacing="6">
+                    <Label style="-fx-font-weight: 700;" text="Tổng quan" />
+                    <Label fx:id="lblBalance" text="Số dư: ₫700,000" />
+                    <Label fx:id="lblTodaySpending" text="Đã chi hôm nay: ₫150,000" />
+                </VBox>
+            </Pane>
+
+            <Pane prefHeight="114.0" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 8;                          -fx-effect: dropshadow(two-pass-box, rgba(15,23,42,0.03), 5, 0, 0, 2);">
+                <VBox spacing="5">
+                    <Label style="-fx-font-weight:700;" text="Mẹo" />
+                    <Label prefHeight="34.0" prefWidth="210.0" text="- Kiểm tra kỹ số tài khoản trước khi chuyển." wrapText="true" />
+                    <Label prefHeight="43.0" prefWidth="216.0" text="- Lưu danh bạ hay dùng để tiết kiệm thời gian." wrapText="true" />
+                </VBox>
+            </Pane>
+        </VBox>
+   
+        <!-- Giữa: Form chuyển tiền -->
+        <VBox alignment="TOP_CENTER" prefHeight="460.0" prefWidth="505.0" spacing="12">
+            <Label style="-fx-font-size: 17px; -fx-font-weight: 800; -fx-text-fill: #0f172a;" text="Chuyển tiền" />
+   
+            <Pane prefHeight="196.0" prefWidth="480.0" style="-fx-background-color: white; -fx-background-radius: 10;                                          -fx-padding: 14; -fx-effect: dropshadow(two-pass-box, rgba(15,23,42,0.06), 10, 0, 0, 3);">
+                <VBox layoutX="20.0" prefHeight="174.0" prefWidth="448.0" spacing="8">
+                    <GridPane hgap="8" prefHeight="132.0" prefWidth="345.0" vgap="8">
+   
+                        <Label text="Đến" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="tfTo" prefWidth="280" promptText="Nhập số tài khoản / tên" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   
+                        <Label text="Số tiền" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <TextField fx:id="tfAmount" promptText="0" />
+                            <HBox spacing="5" />
+                        </VBox>
+   
+                        <Label prefHeight="18.0" prefWidth="94.0" text="Nội dung" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <TextField fx:id="tfNote" promptText="Lời nhắn (tuỳ chọn)" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+                    </GridPane>
+   
+                    <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="456.0" spacing="8">
+                        <Button fx:id="btnTransfer" onAction="#onTransferClicked" style="-fx-background-color: #06b6d4; -fx-text-fill: white;                                        -fx-font-weight: 700; -fx-padding: 8 12; -fx-background-radius: 8;" text="Chuyển ngay" />
+                    </HBox>
+                </VBox>
+            </Pane>
+   
+            <VBox prefWidth="400" spacing="5">
+                <Label style="-fx-font-weight: 700; -fx-text-fill: #111827;" text="Giao dịch gần đây" />
+                <ListView fx:id="recentList" prefHeight="91.0" prefWidth="400.0" style="-fx-background-radius: 8; -fx-background-color: white;                                  -fx-effect: dropshadow(two-pass-box, rgba(15,23,42,0.04), 5, 0, 0, 2);" />
+            </VBox>
+        </VBox>
+    </HBox>
+     <Button fx:id="btnProfile" layoutX="624.0" layoutY="28.0" prefHeight="27.0" prefWidth="117.0" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-padding: 5 10;                        -fx-background-color: white;                        -fx-effect: dropshadow(two-pass-box, rgba(30,41,59,0.06), 4, 0, 0, 2);" text="Người dùng" />
+</AnchorPane>
