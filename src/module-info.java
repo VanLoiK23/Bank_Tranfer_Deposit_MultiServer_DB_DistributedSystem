@@ -7,16 +7,20 @@ module Bank_MultiServer_DistributedSystem {
 	requires java.sql;
 	requires com.rabbitmq.client;
 	requires jbcrypt;
+	requires javafx.graphics;
 
 	opens application to javafx.graphics, javafx.fxml;
 	opens controller to javafx.fxml; // 👈 cho phép FXMLLoader truy cập
 	opens controller.rmi to javafx.fxml;
 	opens controller.rmi.impl to javafx.fxml;
 	opens controller.server to javafx.fxml;
+	opens controller.Common to javafx.fxml;
+	opens controller.LoginAndController to javafx.fxml;
 
 	exports model;
 	exports controller; // nếu bạn muốn gói này public cho module khác
 	exports controller.rmi; 
 	exports controller.rmi.impl; 
 	exports util;
+	exports service;
 }

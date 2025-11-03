@@ -1,13 +1,18 @@
 package controller.LoginAndController;
 
 import java.io.IOException;
+import java.net.URL;
+import java.rmi.NotBoundException;
+import java.util.ResourceBundle;
 
 import controller.TransferController;
 import controller.Common.CommonController;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -17,7 +22,7 @@ import model.User;
 import service.UserService;
 import util.PasswordUtil;
 
-public class LoginController {
+public class LoginController implements Initializable {
 
 	@FXML
 	private ImageView img;
@@ -29,7 +34,7 @@ public class LoginController {
 	private TextField accountNumber;
 
 	@FXML
-	private ChoiceBox<String> serverChoice;
+	private  ComboBox<String> serverChoice;
 
 	@FXML
 	public void exit(MouseEvent event) {
@@ -42,7 +47,7 @@ public class LoginController {
 	private UserService userService = new UserService();
 
 	@FXML
-	void submit(MouseEvent event) throws IOException, InterruptedException {
+	void submit(MouseEvent event) throws IOException, InterruptedException, NotBoundException {
 		if (accountNumber.getText() != null && password.getText() != null && !accountNumber.getText().isEmpty()
 				&& !password.getText().isEmpty()) {
 			if (!commonController.isValidNumber(accountNumber.getText())) {
@@ -68,7 +73,10 @@ public class LoginController {
 						TransferController mainController = commonController.loaderToResource(event, "bank")
 								.getController();
 
-						mainController.setUser(userResult);
+						String[] parts = serverChoice.getValue().split(" - ");
+						String url = parts.length > 1 ? parts[1].trim() : "";
+						System.out.println("Server choice " + url);
+						mainController.setUser(userResult, url);
 					}
 				}
 
@@ -89,6 +97,30 @@ public class LoginController {
 	@FXML
 	void openRegister(MouseEvent event) throws IOException {
 		commonController.loaderToResource(event, "LoginAndRegister/Register");
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		serverChoice.setCellFactory(listView -> new javafx.scene.control.ListCell<String>() {
+		    @Override
+		    protected void updateItem(String item, boolean empty) {
+		        super.updateItem(item, empty);
+		        if (empty || item == null) {
+		            setText(null);
+		        } else {
+		            setText(item);
+		            setTextFill(javafx.scene.paint.Color.WHITE); // text màu trắng
+		            setStyle("-fx-background-color: #151928;"); // nền tối cho item
+		        }
+		    }
+		});
+		serverChoice.setButtonCell(serverChoice.getCellFactory().call(null));
+		
+		serverChoice.setItems(FXCollections.observableArrayList("Server A - 192.168.1.247:2020/BankA",
+				"Server B - 192.168.1.122:2025/BankB"));
+
+		// default
+		serverChoice.setValue("Server A - 192.168.1.247:2020/BankA");
 	}
 
 }

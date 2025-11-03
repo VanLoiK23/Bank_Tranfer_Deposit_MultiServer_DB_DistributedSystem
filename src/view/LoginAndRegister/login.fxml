@@ -2,7 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -32,12 +32,12 @@
       </Label>
       <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="480.0">
          <children>
-            <ChoiceBox fx:id="serverChoice" prefWidth="150.0" style="-fx-background-color: #151928; -fx-border-color: white; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-translate-x: 20px;" />
+            <ComboBox fx:id="serverChoice" prefWidth="150.0" style="-fx-background-color: #151928; -fx-border-color: white; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-translate-x: 20px;" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="accoutNumber" promptText="Account Number" styleClass="tf-box" HBox.hgrow="ALWAYS" />
+            <TextField fx:id="accountNumber" promptText="Account Number" styleClass="tf-box" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="15.0" />

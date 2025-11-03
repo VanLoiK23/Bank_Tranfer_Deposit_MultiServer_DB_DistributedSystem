@@ -11,7 +11,7 @@ public class Client {
 			System.out.println("1001 = " + bankA.getBalance("1001"));
 			System.out.println("1002 = " + bankA.getBalance("1002"));
 
-			boolean ok = bankA.transfer("1001", "1002", 1000);
+			boolean ok = bankA.transfer("1001", "1002", 1000,"note");
 
 			System.out.println(ok ? "✅ Transfer success!" : "❌ Transfer failed!");
 

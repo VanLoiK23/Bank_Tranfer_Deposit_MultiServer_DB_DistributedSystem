@@ -1,5 +1,5 @@
 package application;
-	
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,15 +8,14 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-
 public class Main extends Application {
-	
+
 	@Override
-	public void start(Stage stage) {		
+	public void start(Stage stage) {
 
 		try {
 
-			Parent root = FXMLLoader.load(getClass().getResource("/view/browser.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/LoginAndRegister/login.fxml"));
 			Scene scene = new Scene(root);
 			scene.setFill(Color.TRANSPARENT);
 
@@ -29,7 +28,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

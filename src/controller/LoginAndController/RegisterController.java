@@ -25,6 +25,8 @@ import service.UserService;
 import util.PasswordUtil;
 
 public class RegisterController {
+	
+	private String rmiName="rmi://192.168.1.247:2020/UserBankA";
 
 	@FXML
 	private TextField accountNumber;
@@ -101,10 +103,10 @@ public class RegisterController {
 
 					user.setAccountNumber(accountNumber.getText());
 					user.setPassword(PasswordUtil.hashPassword(password.getText()));
-					user.setBalance(0.0);
+					user.setBalance(1000000.0);
 					user.setUserName(userName.getText());
 
-					IUser userRmi = (IUser) java.rmi.Naming.lookup("rmi://192.168.1.243:2020/BankA");
+					IUser userRmi = (IUser) java.rmi.Naming.lookup(rmiName);
 
 					Platform.runLater(() -> {
 						setDefault();
@@ -127,12 +129,9 @@ public class RegisterController {
 								}
 								clean();
 
-							} else {
-								Platform.runLater(() -> {
-									setDefault();
+							} else {						
 									commonController.alertInfo(AlertType.WARNING, "Không thể tạo tài khoản!!!!",
 											"Fail");
-								});
 							}
 						} catch (RemoteException e) {
 							// TODO Auto-generated catch block

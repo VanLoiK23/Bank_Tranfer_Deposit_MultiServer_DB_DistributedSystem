@@ -1,41 +1,45 @@
 package model;
 
-public class User {
-	private String userName;
-	private String accountNumber;
-	private String password;
-	private Double balance;
+import java.io.Serializable; 
 
-	public String getUserName() {
-		return userName;
-	}
+public class User implements Serializable {  //allow transfer via RMI
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public String getAccountNumber() {
-		return accountNumber;
-	}
+    private String userName;
+    private String accountNumber;
+    private String password;
+    private Double balance;
 
-	public void setAccountNumber(String accountNumber) {
-		this.accountNumber = accountNumber;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getAccountNumber() {
+        return accountNumber;
+    }
 
-	public Double getBalance() {
-		return balance;
-	}
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
-	public void setBalance(Double balance) {
-		this.balance = balance;
-	}
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
 }
